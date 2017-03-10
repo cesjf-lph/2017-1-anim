@@ -25,9 +25,10 @@
     var ctx  = eCanvas.getContext("2d");
     var  x = 10;
     var vx = 30;
-    setInterval(passo, 1000/60);
+    requestAnimationFrame(passo);
 
     function passo(){
+      requestAnimationFrame(passo);
       agora = new Date();
       dt = (agora - antes)/1000;
       ctx.clearRect(0, 0, eCanvas.width, eCanvas.height);
