@@ -87,4 +87,18 @@ function Sprite(){
     }
   }
 
+  this.desenharImg = function (ctx){
+    ctx.save();
+    ctx.translate(this.x,this.y);
+    ctx.rotate((this.angle+90) *Math.PI/180);
+
+    ctx.drawImage(this.img,
+      this.clip.x, this.clip.y, this.clip.w, this.clip.h,
+      -this.width/2, -this.height/2, this.width, this.height);
+    ctx.strokeStyle = "grey";
+    ctx.strokeRect(-this.width/2, -this.height/2, this.width, this.height);
+    ctx.restore();
+  }
+
+
 }

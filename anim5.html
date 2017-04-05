@@ -19,6 +19,12 @@
     <canvas>
     </canvas>
     <script>
+
+    var imgBarril = new Image();
+    imgBarril.src = "barrel.png";
+    var imgPC = new Image();
+    imgPC.src = "personagens.png";
+
     var antes = new Date();
     var agora = new Date();
     var dt = 0;
@@ -36,9 +42,13 @@
     var  pc = new Sprite();
     pc.x = 10;
     pc.y = 50;
+    pc.width = 40;
+    pc.height = 80;
     pc.dir = 1;
     pc.vidas = 3;
     pc.color = "blue";
+    pc.img = imgPC;
+    pc.clip = {x: 282, y: 19, w: 91, h:158};
 
 
     var id = requestAnimationFrame(passo);
@@ -48,7 +58,7 @@
       agora = new Date();
       dt = (agora - antes)/1000;
       //ctx.clearRect(0, 0, eCanvas.width, eCanvas.height);
-      ctx.fillStyle = "tan";
+      ctx.fillStyle = "darkgrey";
       ctx.fillRect(0, 0, eCanvas.width, eCanvas.height);
       ctx.strokeText("fps: " + Math.floor(1/dt), 10, 20);
       ctx.strokeText("Vidas: " + pc.vidas, 10, 40);
@@ -56,7 +66,7 @@
       pc.moverAng(dt);
       level.perseguirAng(pc);
       level.moverAng(dt);
-      pc.desenhar(ctx);
+      pc.desenharImg(ctx);
       level.desenhar(ctx);
       //ctx.moveTo(pc.x, pc.y);
       //ctx.lineTo(level.enemies[0].x, level.enemies[0].y);
