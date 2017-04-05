@@ -30,6 +30,7 @@
 
     var level = new Level();
     level.maxEnemies = 12;
+    level.maxObstaculos = 5;
     level.iniciar();
 
     var  pc = new Sprite();
@@ -51,7 +52,7 @@
       ctx.fillRect(0, 0, eCanvas.width, eCanvas.height);
       ctx.strokeText("fps: " + Math.floor(1/dt), 10, 20);
       ctx.strokeText("Vidas: " + pc.vidas, 10, 40);
-
+      level.repelirObstaculos(pc);
       pc.moverAng(dt);
       level.perseguirAng(pc);
       level.moverAng(dt);
@@ -82,12 +83,12 @@
           evento.preventDefault();
           break;
         case 38:
-          pc.vm = 100;
+          pc.vm = 60;
           pc.dir = 2;
           evento.preventDefault();
           break;
         case 40:
-          pc.vm = -100;
+          pc.vm = -60;
           pc.dir = 4;
           evento.preventDefault();
           break;
